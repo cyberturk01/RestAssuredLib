@@ -63,4 +63,24 @@ public class RestAssuredUtilitiesV2 {
         builder.setBody(body);
         return ExecuteAPI();
     }
+        public static String createMyJsonFile(int i){
+        ExcelUtil data=new ExcelUtil("src/test/resources/TestData.xlsx", "returnService");
+        List<Map<String,String>> myExcel=data.getDataList();
+        return  "{\n"+
+                " \"portalUuid\": \""+ myExcel.get(i).get("portalUuid")+ "\", \n" +
+                " \"meta\": { \n" +
+                " \"languageCode\": \""+ myExcel.get(i).get("languageCode")+ "\", \n" +
+                " \"returnReason\": \""+ myExcel.get(i).get("returnReason")+ "\", \n" +
+                " \"orderNumber\": \""+ myExcel.get(i).get("orderNumber")+ "\" \n"+
+                "}, \n"+
+                " \"sender\": {  \n"+
+                " \"fullName\": \""+ myExcel.get(i).get("fullName")+ "\", \n"+
+                " \"addressStreet\": \""+ myExcel.get(i).get("addressStreet")+ "\", \n"+
+                " \"addressCountryCode\": \""+ myExcel.get(i).get("addressCountryCode")+ "\", \n"+
+                " \"addressZipCode\": \""+ myExcel.get(i).get("addressZipCode")+ "\", \n"+
+                " \"addressCity\": \""+ myExcel.get(i).get("addressCity")+ "\", \n"+
+                " \"email\": \""+ myExcel.get(i).get("email")+ "\" \n" +
+                "}"+
+                "}";
+    }
 }
